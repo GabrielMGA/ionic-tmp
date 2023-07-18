@@ -13,5 +13,12 @@
     </ion-toolbar>
   </ion-header>
 
+  <input #someInput type="text" (input)="onInput($event)">
+  <br>
+  <b>{{ prevCursorPosition }}</b>
+  <br>
+  <b>{{ info }}</b>
+  <br>
+  <b>{{ userAgent }}</b>
   <app-explore-container name="Tab 2 page"></app-explore-container>
 </ion-content>
