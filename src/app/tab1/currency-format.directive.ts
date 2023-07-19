@@ -37,5 +37,11 @@ export class CurrencyFormatDirective {
             .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
         this.el.nativeElement.value = formattedValue;
+
+        const valLength = this.el.nativeElement.value.length;
+            console.log('val length: ', valLength);
+            const input: HTMLInputElement = await this.el.nativeElement.getInputElement();
+            input.selectionStart = valLength;
+            input.selectionEnd = valLength;
     }
 }
