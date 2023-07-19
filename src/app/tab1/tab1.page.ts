@@ -18,35 +18,9 @@ export class Tab1Page {
     this.initForm();
   }
 
-  onInputFocus(event: any) {
-    console.log('focus...');
-    console.log(this.inputValue.length);
-    
-    //  // Obtener el elemento HTML subyacente
-    //  const inputElement = this.myInput.nativeElement;
-    //  // Bloquear el cursor al final del campo de entrada al obtener el enfoque
-    //  inputElement.setSelectionRange(this.inputValue.length, this.inputValue.length);
-    this.cursorLocked = true;
-  }
-
-  onInputChange(event: any) {
-    console.log('change...');
-    console.log(this.inputValue.length);
-    
-    this.cursorLocked = true;
-
-    // Ajustar la posición del cursor al final después de que se actualice el valor
-    setTimeout(() => {
-      const inputElement = this.myInput.nativeElement;
-      inputElement.setSelectionRange(this.inputValue.length, this.inputValue.length);
-    });
-  }
-
   initForm(): void {
     this.formRecharge = this.fb.group({
       amount: ['0.00', Validators.required]
     })
   }
-
-
 }

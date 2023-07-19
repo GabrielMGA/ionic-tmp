@@ -5,34 +5,30 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 })
 export class CurrencyFormatDirective {
 
-    constructor(private elementRef: ElementRef) { }
-
+    constructor(private el: ElementRef) { }
 
     @HostListener('ionInput')
-    onInput() {
-        const value = this.elementRef.nativeElement.value;
-
-
+    async onIonInputAsync(): Promise<void> {
+        const value = this.el.nativeElement.value;
         if (value === '0.0') {
-            this.elementRef.nativeElement.value = '0.00';
+            this.el.nativeElement.value = '0.00';
             return;
         }
 
         if (value.length === 3) {
-
-            let val = '0' + value.replace(/\./g, '');
-            this.elementRef.nativeElement.value = val
+            const val = '0' + value.replace(/\./g, '');
+            this.el.nativeElement.value = val
                 .replace(/\D/g, '')
                 .replace(/^0*(\d+)(\d{2})$/, '$1.$2')
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
             return;
         }
-        let formattedValue = value
+
+        const formattedValue = value
             .replace(/\D/g, '')
             .replace(/^0*(\d+)(\d{2})$/, '$1.$2')
             .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-        this.elementRef.nativeElement.value = formattedValue;
+        this.el.nativeElement.value = formattedValue;
     }
-
 }

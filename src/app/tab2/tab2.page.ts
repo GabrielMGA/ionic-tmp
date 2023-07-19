@@ -38,6 +38,12 @@ export class Tab2Page {
       }, 500);
     }
 
+    if (currentCursorPosition < this.someInput.nativeElement.value.length) {
+      console.log('is less->;)<-');
+      this.someInput.nativeElement.selectionStart = this.someInput.nativeElement.value.length;
+      this.someInput.nativeElement.selectionEnd = this.someInput.nativeElement.value.length;
+    }
+
     this.userAgent = navigator.userAgent;
   }
 

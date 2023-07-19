@@ -19,16 +19,14 @@
           <ion-icon name="logo-usd"></ion-icon>
           <ion-input 
             #myInput
-            [readonly]="cursorLocked"
+            appCurrencyFormat
             maxlength="12" 
             inputmode="tel" 
             type="text" 
             [(ngModel)]="inputValue"
             [debounce]="500"
             placeholder="Monto" 
-            class="color-text ion-text-center"
-            (ionFocus)="onInputFocus($event)"
-            (ionChange)="onInputChange($event)">
+            class="color-text ion-text-center">
           </ion-input>
         </ion-item>
       </ion-col>
