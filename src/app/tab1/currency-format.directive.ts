@@ -22,11 +22,14 @@ export class CurrencyFormatDirective {
                 .replace(/^0*(\d+)(\d{2})$/, '$1.$2')
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-            const valLength = this.el.nativeElement.value.length;
-            console.log('val length: ', valLength);
-            const input: HTMLInputElement = await this.el.nativeElement.getInputElement();
-            input.selectionStart = valLength;
-            input.selectionEnd = valLength;
+            setTimeout(async () => {
+                const valLength = this.el.nativeElement.value.length;
+                console.log('val length: ', valLength);
+                const input: HTMLInputElement = await this.el.nativeElement.getInputElement();
+                input.selectionStart = valLength;
+                input.selectionEnd = valLength;
+            }, 500);
+
 
             return;
         }
@@ -38,10 +41,12 @@ export class CurrencyFormatDirective {
 
         this.el.nativeElement.value = formattedValue;
 
-        const valLength = this.el.nativeElement.value.length;
+        setTimeout(async () => {
+            const valLength = this.el.nativeElement.value.length;
             console.log('val length: ', valLength);
             const input: HTMLInputElement = await this.el.nativeElement.getInputElement();
             input.selectionStart = valLength;
             input.selectionEnd = valLength;
+        }, 500);
     }
 }
